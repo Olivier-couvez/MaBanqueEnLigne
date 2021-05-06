@@ -30,22 +30,22 @@ namespace WinFormsMaBanqueEnLigne
         private void InitializeComponent()
         {
             this.groupBoxEmetteur = new System.Windows.Forms.GroupBox();
-            this.groupBoxBeneficiaire = new System.Windows.Forms.GroupBox();
-            this.groupBoxVirement = new System.Windows.Forms.GroupBox();
-            this.buttonValider = new System.Windows.Forms.Button();
-            this.comboBoxEmetteur = new System.Windows.Forms.ComboBox();
             this.textBoxSoldeEmetteur = new System.Windows.Forms.TextBox();
-            this.comboBoxbeneficiaire = new System.Windows.Forms.ComboBox();
-            this.textBoxSoldeBeneficiaire = new System.Windows.Forms.TextBox();
-            this.labelTitre = new System.Windows.Forms.Label();
-            this.labelAjoutCompte = new System.Windows.Forms.Label();
-            this.buttonFrance = new System.Windows.Forms.Button();
+            this.comboBoxEmetteur = new System.Windows.Forms.ComboBox();
+            this.groupBoxBeneficiaire = new System.Windows.Forms.GroupBox();
             this.buttonEurope = new System.Windows.Forms.Button();
-            this.labelMontant = new System.Windows.Forms.Label();
-            this.labelMotif = new System.Windows.Forms.Label();
-            this.labelEuro = new System.Windows.Forms.Label();
-            this.textBoxMontant = new System.Windows.Forms.TextBox();
+            this.buttonFrance = new System.Windows.Forms.Button();
+            this.labelAjoutCompte = new System.Windows.Forms.Label();
+            this.textBoxSoldeBeneficiaire = new System.Windows.Forms.TextBox();
+            this.comboBoxbeneficiaire = new System.Windows.Forms.ComboBox();
+            this.groupBoxVirement = new System.Windows.Forms.GroupBox();
             this.textBoxMotif = new System.Windows.Forms.TextBox();
+            this.textBoxMontant = new System.Windows.Forms.TextBox();
+            this.labelEuro = new System.Windows.Forms.Label();
+            this.labelMotif = new System.Windows.Forms.Label();
+            this.labelMontant = new System.Windows.Forms.Label();
+            this.buttonValider = new System.Windows.Forms.Button();
+            this.labelTitre = new System.Windows.Forms.Label();
             this.groupBoxEmetteur.SuspendLayout();
             this.groupBoxBeneficiaire.SuspendLayout();
             this.groupBoxVirement.SuspendLayout();
@@ -66,6 +66,22 @@ namespace WinFormsMaBanqueEnLigne
             this.groupBoxEmetteur.Text = "Sélectionner un compte émetteur                                                  " +
     "             Solde indicatif";
             // 
+            // textBoxSoldeEmetteur
+            // 
+            this.textBoxSoldeEmetteur.Location = new System.Drawing.Point(573, 43);
+            this.textBoxSoldeEmetteur.Name = "textBoxSoldeEmetteur";
+            this.textBoxSoldeEmetteur.Size = new System.Drawing.Size(100, 27);
+            this.textBoxSoldeEmetteur.TabIndex = 0;
+            // 
+            // comboBoxEmetteur
+            // 
+            this.comboBoxEmetteur.FormattingEnabled = true;
+            this.comboBoxEmetteur.Location = new System.Drawing.Point(25, 41);
+            this.comboBoxEmetteur.Name = "comboBoxEmetteur";
+            this.comboBoxEmetteur.Size = new System.Drawing.Size(289, 27);
+            this.comboBoxEmetteur.TabIndex = 0;
+            this.comboBoxEmetteur.SelectedIndexChanged += new System.EventHandler(this.comboBoxEmetteur_SelectedIndexChanged);
+            // 
             // groupBoxBeneficiaire
             // 
             this.groupBoxBeneficiaire.BackColor = System.Drawing.SystemColors.ControlDark;
@@ -84,6 +100,51 @@ namespace WinFormsMaBanqueEnLigne
             this.groupBoxBeneficiaire.Text = "Sélectionner un compte bénéficiaire                                              " +
     "           Solde indicatif";
             // 
+            // buttonEurope
+            // 
+            this.buttonEurope.Location = new System.Drawing.Point(433, 43);
+            this.buttonEurope.Name = "buttonEurope";
+            this.buttonEurope.Size = new System.Drawing.Size(90, 29);
+            this.buttonEurope.TabIndex = 7;
+            this.buttonEurope.Text = "Europe";
+            this.buttonEurope.UseVisualStyleBackColor = true;
+            // 
+            // buttonFrance
+            // 
+            this.buttonFrance.Location = new System.Drawing.Point(331, 43);
+            this.buttonFrance.Name = "buttonFrance";
+            this.buttonFrance.Size = new System.Drawing.Size(96, 29);
+            this.buttonFrance.TabIndex = 6;
+            this.buttonFrance.Text = "France";
+            this.buttonFrance.UseVisualStyleBackColor = true;
+            // 
+            // labelAjoutCompte
+            // 
+            this.labelAjoutCompte.AutoSize = true;
+            this.labelAjoutCompte.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelAjoutCompte.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labelAjoutCompte.Location = new System.Drawing.Point(365, 23);
+            this.labelAjoutCompte.Name = "labelAjoutCompte";
+            this.labelAjoutCompte.Size = new System.Drawing.Size(130, 17);
+            this.labelAjoutCompte.TabIndex = 5;
+            this.labelAjoutCompte.Text = "Ajouter un compte";
+            // 
+            // textBoxSoldeBeneficiaire
+            // 
+            this.textBoxSoldeBeneficiaire.Location = new System.Drawing.Point(573, 39);
+            this.textBoxSoldeBeneficiaire.Name = "textBoxSoldeBeneficiaire";
+            this.textBoxSoldeBeneficiaire.Size = new System.Drawing.Size(100, 27);
+            this.textBoxSoldeBeneficiaire.TabIndex = 2;
+            // 
+            // comboBoxbeneficiaire
+            // 
+            this.comboBoxbeneficiaire.FormattingEnabled = true;
+            this.comboBoxbeneficiaire.Location = new System.Drawing.Point(25, 39);
+            this.comboBoxbeneficiaire.Name = "comboBoxbeneficiaire";
+            this.comboBoxbeneficiaire.Size = new System.Drawing.Size(289, 27);
+            this.comboBoxbeneficiaire.TabIndex = 1;
+            this.comboBoxbeneficiaire.SelectedIndexChanged += new System.EventHandler(this.comboBoxbeneficiaire_SelectedIndexChanged);
+            // 
             // groupBoxVirement
             // 
             this.groupBoxVirement.BackColor = System.Drawing.SystemColors.ControlDark;
@@ -101,107 +162,19 @@ namespace WinFormsMaBanqueEnLigne
             this.groupBoxVirement.TabStop = false;
             this.groupBoxVirement.Text = "Caractéristique du vireemnt";
             // 
-            // buttonValider
+            // textBoxMotif
             // 
-            this.buttonValider.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonValider.Location = new System.Drawing.Point(322, 409);
-            this.buttonValider.Name = "buttonValider";
-            this.buttonValider.Size = new System.Drawing.Size(153, 29);
-            this.buttonValider.TabIndex = 3;
-            this.buttonValider.Text = "Valider";
-            this.buttonValider.UseVisualStyleBackColor = true;
+            this.textBoxMotif.Location = new System.Drawing.Point(195, 86);
+            this.textBoxMotif.Name = "textBoxMotif";
+            this.textBoxMotif.Size = new System.Drawing.Size(478, 27);
+            this.textBoxMotif.TabIndex = 10;
             // 
-            // comboBoxEmetteur
+            // textBoxMontant
             // 
-            this.comboBoxEmetteur.FormattingEnabled = true;
-            this.comboBoxEmetteur.Location = new System.Drawing.Point(25, 41);
-            this.comboBoxEmetteur.Name = "comboBoxEmetteur";
-            this.comboBoxEmetteur.Size = new System.Drawing.Size(289, 27);
-            this.comboBoxEmetteur.TabIndex = 0;
-            this.comboBoxEmetteur.SelectedIndexChanged += new System.EventHandler(this.comboBoxEmetteur_SelectedIndexChanged);
-            // 
-            // textBoxSoldeEmetteur
-            // 
-            this.textBoxSoldeEmetteur.Location = new System.Drawing.Point(573, 43);
-            this.textBoxSoldeEmetteur.Name = "textBoxSoldeEmetteur";
-            this.textBoxSoldeEmetteur.Size = new System.Drawing.Size(100, 27);
-            this.textBoxSoldeEmetteur.TabIndex = 0;
-            // 
-            // comboBoxbeneficiaire
-            // 
-            this.comboBoxbeneficiaire.FormattingEnabled = true;
-            this.comboBoxbeneficiaire.Location = new System.Drawing.Point(25, 39);
-            this.comboBoxbeneficiaire.Name = "comboBoxbeneficiaire";
-            this.comboBoxbeneficiaire.Size = new System.Drawing.Size(289, 27);
-            this.comboBoxbeneficiaire.TabIndex = 1;
-            // 
-            // textBoxSoldeBeneficiaire
-            // 
-            this.textBoxSoldeBeneficiaire.Location = new System.Drawing.Point(573, 39);
-            this.textBoxSoldeBeneficiaire.Name = "textBoxSoldeBeneficiaire";
-            this.textBoxSoldeBeneficiaire.Size = new System.Drawing.Size(100, 27);
-            this.textBoxSoldeBeneficiaire.TabIndex = 2;
-            // 
-            // labelTitre
-            // 
-            this.labelTitre.AutoSize = true;
-            this.labelTitre.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelTitre.Location = new System.Drawing.Point(26, 13);
-            this.labelTitre.Name = "labelTitre";
-            this.labelTitre.Size = new System.Drawing.Size(227, 25);
-            this.labelTitre.TabIndex = 4;
-            this.labelTitre.Text = "Effectuer un virement";
-            // 
-            // labelAjoutCompte
-            // 
-            this.labelAjoutCompte.AutoSize = true;
-            this.labelAjoutCompte.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelAjoutCompte.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelAjoutCompte.Location = new System.Drawing.Point(365, 23);
-            this.labelAjoutCompte.Name = "labelAjoutCompte";
-            this.labelAjoutCompte.Size = new System.Drawing.Size(130, 17);
-            this.labelAjoutCompte.TabIndex = 5;
-            this.labelAjoutCompte.Text = "Ajouter un compte";
-            // 
-            // buttonFrance
-            // 
-            this.buttonFrance.Location = new System.Drawing.Point(331, 43);
-            this.buttonFrance.Name = "buttonFrance";
-            this.buttonFrance.Size = new System.Drawing.Size(96, 29);
-            this.buttonFrance.TabIndex = 6;
-            this.buttonFrance.Text = "France";
-            this.buttonFrance.UseVisualStyleBackColor = true;
-            // 
-            // buttonEurope
-            // 
-            this.buttonEurope.Location = new System.Drawing.Point(433, 43);
-            this.buttonEurope.Name = "buttonEurope";
-            this.buttonEurope.Size = new System.Drawing.Size(90, 29);
-            this.buttonEurope.TabIndex = 7;
-            this.buttonEurope.Text = "Europe";
-            this.buttonEurope.UseVisualStyleBackColor = true;
-            // 
-            // labelMontant
-            // 
-            this.labelMontant.AutoSize = true;
-            this.labelMontant.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelMontant.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelMontant.Location = new System.Drawing.Point(25, 40);
-            this.labelMontant.Name = "labelMontant";
-            this.labelMontant.Size = new System.Drawing.Size(63, 17);
-            this.labelMontant.TabIndex = 6;
-            this.labelMontant.Text = "Montant";
-            // 
-            // labelMotif
-            // 
-            this.labelMotif.AutoSize = true;
-            this.labelMotif.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelMotif.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelMotif.Location = new System.Drawing.Point(25, 92);
-            this.labelMotif.Name = "labelMotif";
-            this.labelMotif.Size = new System.Drawing.Size(111, 17);
-            this.labelMotif.TabIndex = 7;
-            this.labelMotif.Text = "Motif (facultatif)";
+            this.textBoxMontant.Location = new System.Drawing.Point(195, 34);
+            this.textBoxMontant.Name = "textBoxMontant";
+            this.textBoxMontant.Size = new System.Drawing.Size(100, 27);
+            this.textBoxMontant.TabIndex = 9;
             // 
             // labelEuro
             // 
@@ -214,19 +187,48 @@ namespace WinFormsMaBanqueEnLigne
             this.labelEuro.TabIndex = 8;
             this.labelEuro.Text = "Eur";
             // 
-            // textBoxMontant
+            // labelMotif
             // 
-            this.textBoxMontant.Location = new System.Drawing.Point(195, 34);
-            this.textBoxMontant.Name = "textBoxMontant";
-            this.textBoxMontant.Size = new System.Drawing.Size(100, 27);
-            this.textBoxMontant.TabIndex = 9;
+            this.labelMotif.AutoSize = true;
+            this.labelMotif.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelMotif.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labelMotif.Location = new System.Drawing.Point(25, 92);
+            this.labelMotif.Name = "labelMotif";
+            this.labelMotif.Size = new System.Drawing.Size(111, 17);
+            this.labelMotif.TabIndex = 7;
+            this.labelMotif.Text = "Motif (facultatif)";
             // 
-            // textBoxMotif
+            // labelMontant
             // 
-            this.textBoxMotif.Location = new System.Drawing.Point(195, 86);
-            this.textBoxMotif.Name = "textBoxMotif";
-            this.textBoxMotif.Size = new System.Drawing.Size(478, 27);
-            this.textBoxMotif.TabIndex = 10;
+            this.labelMontant.AutoSize = true;
+            this.labelMontant.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelMontant.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labelMontant.Location = new System.Drawing.Point(25, 40);
+            this.labelMontant.Name = "labelMontant";
+            this.labelMontant.Size = new System.Drawing.Size(63, 17);
+            this.labelMontant.TabIndex = 6;
+            this.labelMontant.Text = "Montant";
+            // 
+            // buttonValider
+            // 
+            this.buttonValider.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonValider.Location = new System.Drawing.Point(322, 409);
+            this.buttonValider.Name = "buttonValider";
+            this.buttonValider.Size = new System.Drawing.Size(153, 29);
+            this.buttonValider.TabIndex = 3;
+            this.buttonValider.Text = "Valider";
+            this.buttonValider.UseVisualStyleBackColor = true;
+            this.buttonValider.Click += new System.EventHandler(this.buttonValider_Click);
+            // 
+            // labelTitre
+            // 
+            this.labelTitre.AutoSize = true;
+            this.labelTitre.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelTitre.Location = new System.Drawing.Point(26, 13);
+            this.labelTitre.Name = "labelTitre";
+            this.labelTitre.Size = new System.Drawing.Size(227, 25);
+            this.labelTitre.TabIndex = 4;
+            this.labelTitre.Text = "Effectuer un virement";
             // 
             // BanqueEnLigne
             // 

@@ -19,6 +19,8 @@ namespace WinFormsMaBanqueEnLigne
         Compte compte1;
         Compte compte2;
         Compte compte3;
+        int numVirement = 0;
+        bool virementOk;
 
 
         public BanqueEnLigne()
@@ -43,13 +45,13 @@ namespace WinFormsMaBanqueEnLigne
         {
             // Ajout dans la liste des clients
 
-            lesClients.Add(clientAuthentifie);
+            //lesClients.Add(clientAuthentifie);
 
             // Ajout des comptes du client
 
-            lesComptes.Add(clientAuthentifie.MesComptes[0]);
-            lesComptes.Add(clientAuthentifie.MesComptes[1]);
-            lesComptes.Add(clientAuthentifie.MesComptes[2]);
+            //lesComptes.Add(clientAuthentifie.MesComptes[0]);
+            //lesComptes.Add(clientAuthentifie.MesComptes[1]);
+            //lesComptes.Add(clientAuthentifie.MesComptes[2]);
 
             //Mise à jour des combobox
 
@@ -62,7 +64,61 @@ namespace WinFormsMaBanqueEnLigne
 
         private void comboBoxEmetteur_SelectedIndexChanged(object sender, EventArgs e)
         {
-            textBoxSoldeEmetteur.Text = Convert.ToString(lesComptes[comboBoxEmetteur.SelectedIndex].retournerSolde());
+            if (comboBoxEmetteur.SelectedIndex != -1)
+            {
+                textBoxSoldeEmetteur.Text = Convert.ToString(clientAuthentifie.MesComptes[comboBoxEmetteur.SelectedIndex].retournerSolde());
+            }            
+        }
+
+        private void comboBoxbeneficiaire_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxbeneficiaire.SelectedIndex != -1)
+            {
+                textBoxSoldeBeneficiaire.Text = Convert.ToString(clientAuthentifie.MesComptes[comboBoxbeneficiaire.SelectedIndex].retournerSolde());
+            }            
+        }
+
+        private void buttonValider_Click(object sender, EventArgs e)
+        {
+            try { 
+            if (textBoxMontant.Text != null)
+            {
+                if (Convert.ToDouble(textBoxSoldeEmetteur.Text) >= (Convert.ToDouble(textBoxMontant.Text)))
+                {
+                        numVirement++;
+                        Virement nouveauVirement = new Virement(numVirement, clientAuthentifie.MesComptes[comboBoxEmetteur.SelectedIndex], clientAuthentifie.MesComptes[comboBoxbeneficiaire.SelectedIndex], Convert.ToDouble(textBoxMontant.Text), textBoxMotif.Text);
+                        nouveauVirement.Ladate = DateTime.Now;
+                        virementOk = nouveauVirement.effectuerVirement();
+
+                        if (virementOk == true)
+                        {
+                            MessageBox.Show("Le virement à été exécuté");
+                            clientAuthentifie.ajouterVirement(nouveauVirement);
+                            textBoxMontant.Text = "";
+                            textBoxMotif.Text = "";
+                            comboBoxbeneficiaire.SelectedIndex = -1;
+                            comboBoxEmetteur.SelectedIndex = -1;
+                            textBoxSoldeBeneficiaire.Text = "";
+                            textBoxSoldeEmetteur.Text = "";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Veuillez vérifier, une erreur s'est produite");
+                        }
+                }
+                else
+                {
+                    MessageBox.Show("Vous n'avez pas assez sur votre compte pour faire le virement !");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vous n'avez pas saisi de montant !");
+            }
+            }catch
+            {
+                MessageBox.Show("Votre saisie n'est pas correcte !");
+            }
         }
     }
 }
