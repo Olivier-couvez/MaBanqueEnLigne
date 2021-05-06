@@ -43,13 +43,13 @@ namespace WinFormsMaBanqueEnLigne
         {
             // Ajout dans la liste des clients
 
-            lesClients.Add(clientAuthentifie);
+            //lesClients.Add(clientAuthentifie);
 
             // Ajout des comptes du client
 
-            lesComptes.Add(clientAuthentifie.MesComptes[0]);
-            lesComptes.Add(clientAuthentifie.MesComptes[1]);
-            lesComptes.Add(clientAuthentifie.MesComptes[2]);
+            //lesComptes.Add(clientAuthentifie.MesComptes[0]);
+            //lesComptes.Add(clientAuthentifie.MesComptes[1]);
+            //lesComptes.Add(clientAuthentifie.MesComptes[2]);
 
             //Mise à jour des combobox
 
